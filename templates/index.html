@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Jobs</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        margin: 5px;
+        width: 200px;
+      }
+
+      button[type="submit"] {
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Entry Level JavaScript Jobs</h1>
+      <form method="POST">
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword" name="keyword" value="{{ keyword }}" />
+        <label for="location">Location:</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value="{{ location }}"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <div>
+        {% if job_listings %}
+        <h2>Job Listings:</h2>
+        <ul>
+          {% for job in job_listings %}
+          <li>
+            <a href="{{ job.link }}" target="_blank">{{ job.title }}</a> - {{
+            job.company }} - {{ job.location }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
